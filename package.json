@@ -1,0 +1,20 @@
+{
+  "name": "parking-system",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "start:all": "node scripts/start-all.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Smart Parking Management System with booking and AI suggestions",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^4.22.1",
+    "mongoose": "^9.4.1"
+  }
+}

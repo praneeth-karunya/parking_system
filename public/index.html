@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkSmart Pro | Parking Management System</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>ParkSmart Pro</h1>
+        <p>AI-powered Parking Management Dashboard</p>
+      </div>
+      <div class="header-metrics">
+        <div class="metric-pill" id="ownerRevenue">Owner Revenue: Rs.0</div>
+        <div class="metric-pill" id="cleanupBadge">Expired Cleaned: 0</div>
+        <button id="seedBtn" class="btn btn-secondary">Initialize Slots</button>
+      </div>
+    </header>
+
+    <main class="flow-layout">
+      <section class="card flow-step hero-step" id="heroSection">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="https://cdn.coverr.co/videos/coverr-cars-in-a-parking-lot-1579/1080p.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h2>Smart Parking. Premium Experience.</h2>
+          <p>Live slots, AI recommendations, instant booking and timeline management in one pro dashboard.</p>
+        </div>
+      </section>
+
+      <section class="card flow-step" id="availabilitySection">
+        <h2>Live Availability</h2>
+        <div id="stats" class="stats"></div>
+        <div id="slotGrid" class="slot-grid"></div>
+      </section>
+
+      <section class="card flow-step">
+        <h2>Add Slot</h2>
+        <form id="slotForm" class="form">
+          <input type="text" id="slotNumber" placeholder="Slot Number (e.g. A-110)" required />
+          <select id="slotZone" required>
+            <option value="A">Zone A</option>
+            <option value="B">Zone B</option>
+            <option value="C">Zone C</option>
+            <option value="VIP">Zone VIP</option>
+          </select>
+          <input type="number" id="slotLevel" min="1" value="1" placeholder="Level" required />
+          <input type="number" id="slotRate" min="1" value="40" placeholder="Rate per hour" required />
+          <label class="check-label"><input type="checkbox" id="slotCovered" /> Covered</label>
+          <label class="check-label"><input type="checkbox" id="slotCharging" /> EV Charging</label>
+          <button type="submit" class="btn">Add Slot</button>
+        </form>
+      </section>
+
+      <section class="card flow-step" id="aiSection">
+        <h2>AI Smart Suggestions</h2>
+        <form id="aiForm" class="form inline">
+          <select id="aiVehicleType">
+            <option value="car">Car</option>
+            <option value="bike">Bike</option>
+            <option value="ev">EV</option>
+          </select>
+          <input type="number" id="aiBudget" min="10" value="50" placeholder="Budget/hr" />
+          <label class="check-label"><input type="checkbox" id="aiCovered" /> Covered only</label>
+          <button type="submit" class="btn">Get Recommendations</button>
+        </form>
+        <div id="aiResults" class="list"></div>
+      </section>
+
+      <section class="card flow-step" id="bookingSection">
+        <h2>Create Booking</h2>
+        <form id="bookingForm" class="form">
+          <input type="text" id="customerName" placeholder="Customer Name" required />
+          <input type="text" id="vehicleNumber" placeholder="Vehicle Number" required />
+          <select id="vehicleType" required>
+            <option value="car">Car</option>
+            <option value="bike">Bike</option>
+            <option value="ev">EV</option>
+          </select>
+          <select id="slotSelect" required></select>
+          <input type="datetime-local" id="startTime" required />
+          <input type="datetime-local" id="endTime" required />
+          <button type="submit" class="btn">Book Slot</button>
+        </form>
+      </section>
+
+      <section class="card flow-step" id="timelineSection">
+        <h2>Bookings Timeline</h2>
+        <div id="bookingList" class="list"></div>
+      </section>
+    </main>
+
+    <div id="bookingSuccessModal" class="modal hidden">
+      <div class="modal-card">
+        <h3>Successfully Booked</h3>
+        <p>Your booking is saved and visible in Booking Timeline.</p>
+        <button id="closeSuccessModal" class="btn">Great</button>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
